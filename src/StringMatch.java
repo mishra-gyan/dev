@@ -1,7 +1,3 @@
-
-
-import java.util.ArrayDeque;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class StringMatch {
@@ -14,13 +10,13 @@ public class StringMatch {
 
 //        ArrayDequeue
         Scanner scanner = new Scanner(System.in);
-        System.out.printf("\nEnter testcase count: ");
+        System.out.print("\nEnter testcase count: ");
         int testCaseCount = Integer.parseInt(scanner.nextLine());
         int[] arrCount = new int[testCaseCount];
         final String constant = "gfg";
         for (int i = 0; i < testCaseCount; i++) {
 
-            System.out.printf("\n Enter string: ");
+            System.out.print("\n Enter string: ");
             String str = scanner.nextLine();
 
             int index = 0;

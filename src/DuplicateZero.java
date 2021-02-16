@@ -32,6 +32,6 @@ public class DuplicateZero {
                 i++;
             }
         }
-        System.out.printf("Array: " + Arrays.toString(nums));
+        System.out.print("Array: " + Arrays.toString(nums));
     }
 }
