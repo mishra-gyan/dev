@@ -1,10 +1,11 @@
+
 public class LambdaTest {
 
     interface LamdbaInterface1{
         int operation(int a, int b);
 
         default void message(String str) {
-            System.out.printf("Hello");
+            System.out.print("Hello");
         }
     }
 
@@ -19,9 +20,9 @@ public class LambdaTest {
         LamdbaInterface1 multiply = (x, y) -> x * y;
 
         LambdaTest test = new LambdaTest();
-        System.out.printf("\nOperation 1: "+ test.operate(3 ,6, add));
+        System.out.print("\nOperation 1: "+ test.operate(3 ,6, add));
 
-        System.out.printf("\nOperation 2: "+ test.operate(3 ,6, multiply));
+        System.out.print("\nOperation 2: "+ test.operate(3 ,6, multiply));
 
     }
 }

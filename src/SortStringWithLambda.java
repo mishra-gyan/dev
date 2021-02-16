@@ -1,3 +1,5 @@
+
+
 import java.util.Arrays;
 
 public class SortStringWithLambda {
@@ -19,7 +21,7 @@ public class SortStringWithLambda {
 
         sortLargeNumbers(arr);
         for (String str: arr) {
-            System.out.printf("\n " + str);
+            System.out.print("\n " + str);
         }
     }
 }
