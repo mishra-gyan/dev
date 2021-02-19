@@ -14,28 +14,30 @@ public class CheckForBalanceParenthesis {
     }
 
 
-    static boolean isBalanced(String input) {
+     static boolean isBalanced(String input) {
+
+        if (input == null || input.length() == 0)
+            return false;
 
         char[] inputArray = input.toCharArray();
         ArrayDeque<Character> stack = new ArrayDeque<>(inputArray.length);
-        for (int i = 0; i < inputArray.length ; i++) {
-            char c = inputArray[i];
-            if (stack.isEmpty()) {
-                if (c == openBracket || c == openSqBracket || c == openCurlyBracket)
-                    stack.push(c);
-                else return false;
-            } else {
-                char charInStack = stack.peek();
-                if ( (charInStack == openBracket && c == closeBracket )
-                        || charInStack == openSqBracket && c == closeSqBracket
-                        || charInStack == openCurlyBracket && c == closeCurlyBracket) {
-                    stack.pop();
-                } else {
-                    stack.push(c);
-                }
+         for (char c : inputArray) {
+             if (stack.isEmpty()) {
+                 if (c == openBracket || c == openSqBracket || c == openCurlyBracket)
+                     stack.push(c);
+                 else return false;
+             } else {
+                 char charInStack = stack.peek();
+                 if ((charInStack == openBracket && c == closeBracket)
+                         || charInStack == openSqBracket && c == closeSqBracket
+                         || charInStack == openCurlyBracket && c == closeCurlyBracket) {
+                     stack.pop();
+                 } else {
+                     stack.push(c);
+                 }
 
-            }
-        }
+             }
+         }
 
         return stack.isEmpty();
     }
