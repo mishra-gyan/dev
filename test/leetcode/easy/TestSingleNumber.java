@@ -7,6 +7,8 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.util.*;
 import java.util.stream.Stream;
 
+import static org.junit.jupiter.api.Assertions.assertAll;
+
 public class TestSingleNumber {
 
     public static Stream<Map.Entry<List<Integer>, Integer>> inputData() {
@@ -25,8 +27,12 @@ public class TestSingleNumber {
         int[] arr = inputSet.getKey().stream().mapToInt(Integer::intValue).toArray();
         int expectedOutput = inputSet.getValue();
 
-        Assertions.assertEquals(expectedOutput, SingleNumber.singleNumber(arr));
+        assertAll("3 implementations", () -> Assertions.assertEquals(expectedOutput, SingleNumber.singleNumber(arr) ,"Using Array")  ,
+                 () -> Assertions.assertEquals(expectedOutput, SingleNumber.singleNumberUsingList(arr), "Using List") ,
+                  () -> Assertions.assertEquals(expectedOutput, SingleNumber.singleNumberUsingXOR(arr), "Using XOR"));
 
         }
+
+
 
 }
