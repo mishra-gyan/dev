@@ -10,22 +10,21 @@ import java.util.stream.Stream;
 
 public class TestReverseItemsInQueue {
 
-     static TestData[] inputData = new TestData[]{
-            new TestData<Queue<Integer>, Integer>(new LinkedList<>(Arrays.asList(10, 20, 30, 40, 50)), new LinkedList<>(Arrays.asList(30, 20, 10, 40, 50)), 3)
-            , new TestData<Queue<Integer>, Integer>(new LinkedList<>(Collections.singletonList(10)), new LinkedList<>(Collections.singletonList(10)), 2)
-            , new TestData<Queue<Integer>, Integer>(new LinkedList<>(Arrays.asList(10, 20, 30, 40, 50)), new LinkedList<>(Arrays.asList(50, 40,30, 20, 10)), 5)
+     static TestData<Queue<Integer>, Queue<Integer>, Integer>[] inputData = new TestData[]{
+            new TestData<Queue<Integer>, Queue<Integer>, Integer>(new LinkedList<>(Arrays.asList(10, 20, 30, 40, 50)), new LinkedList<>(Arrays.asList(30, 20, 10, 40, 50)), 3)
+            , new TestData<Queue<Integer>, Queue<Integer>, Integer>(new LinkedList<>(Collections.singletonList(10)), new LinkedList<>(Collections.singletonList(10)), 2)
+            , new TestData<Queue<Integer>, Queue<Integer>, Integer>(new LinkedList<>(Arrays.asList(10, 20, 30, 40, 50)), new LinkedList<>(Arrays.asList(50, 40,30, 20, 10)), 5)
     };
 
 
     @TestFactory
     public Stream<DynamicTest> testreverseQueue() {
         return Arrays.stream(inputData).map(input -> {
-            TestData<Queue<Integer>, Integer> testCaseData = input;
 
-            return DynamicTest.dynamicTest(Collections.singletonList(testCaseData.input) + " reverse " + testCaseData.parameter + " counts " + " = " + Collections.singletonList(testCaseData.output),
+            return DynamicTest.dynamicTest(Collections.singletonList(input.input) + " reverse " + input.parameter + " counts " + " = " + Collections.singletonList(input.output),
                     () -> {
-                        new ReverseItemsInQueue().reverseQueue(testCaseData.input, testCaseData.parameter);
-                        Assertions.assertArrayEquals(testCaseData.input.toArray(), testCaseData.output.toArray());
+                        new ReverseItemsInQueue().reverseQueue(input.input, input.parameter);
+                        Assertions.assertArrayEquals(input.input.toArray(), input.output.toArray());
                     });
         });
     }
@@ -45,15 +44,3 @@ public class TestReverseItemsInQueue {
 
 }
 
-class TestData<E, V> {
-    E input;
-    E output;
-    V parameter;
-
-    TestData(E input, E output, V parameter) {
-        this.input = input;
-        this.output = output;
-        this.parameter = parameter;
-    }
-
-}
